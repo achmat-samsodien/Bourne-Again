@@ -1,2 +1,2 @@
-# Wicked-Cool-Shell-Scripts-
-Shell scripts from Wicked Cool and other sources
+# Bourne-Again 
+Shell scripts from day to day workings
