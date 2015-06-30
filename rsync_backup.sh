@@ -1,4 +1,7 @@
 #! /bin/sh
+
+#shell script before the days of discovering GUI tools
+
 ROOT_UID=0
 
 if [ $UID != $ROOT_UID ]; then
