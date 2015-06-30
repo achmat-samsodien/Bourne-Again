@@ -1,0 +1,64 @@
+#!/bin/bash
+
+#Simple Nagios plugin to monitor IBM sibqueues
+#Queues generated, via wsadmin and qcl files, to a file then queried via this script
+
+sibqueue='/usr/local/bin/sibqueues.out'
+
+for ((i=1;; i++)); do
+    read "q$i" || break;
+done < $sibqueue
+
+#$q1=QUEUE1
+#$q2=QUEUE2
+#$q3=QUEUE3
+#$q4=QUEUE4
+#$q5=QUEUE5
+
+
+qstrip=("$q1" "$q2" "$q3" "$q4" "$q5");
+
+if [ $q1 -gt 75 ]
+then 
+    echo "WARNING: QUEUE1 at $q1"
+    exit 1
+elif [ $q1 -ge 100 ]
+then
+    echo "CRITICAL: QUEUE1 at $q1"
+    exit 2
+elif [ $q2 -gt 400 ]
+then
+    echo "WARNING: QUEUE2 at $q2"
+    exit 1
+elif [ $q2 -ge 500 ]
+then
+    echo "CRITICAL: QUEUE2 at $q2"
+    exit 2
+elif [ $q11 -gt 75 ]
+then
+    echo "WARNING: QUEUE3 at $q3"
+    exit 1
+elif [ $q11 -ge 100 ]
+then
+    echo "CRITICAL: QUEUE3 at $q3"
+    exit 2
+elif [ $q12 -gt 80000 ]
+then
+    echo "WARNING: QUEUE4 at $q4"
+    exit 1
+elif [ $q12 -gt 10000 ]
+then
+    echo "CRITICAL: QUEUE4 at $q4"
+    exit 2
+elif [ $q13 -gr 400 ]
+then
+   echo "WARNING: QUEUE5 at $q5"
+   exit 1
+elif [ $q13 -gt 400 ]
+then
+    echo "CRITICAL: QUEUE at $q5"
+    exit 2
+else
+   echo "ALL QUEUES OK"
+   exit 0
+fi
