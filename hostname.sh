@@ -15,7 +15,7 @@ fi
 
 echo "Changing hostname from $OLD_HOSTNAME to $NEW_HOSTNAME..."
 
-hostname "$NEW_HOSTNAME"
+hostnamectl set-hostname "$NEW_HOSTNAME"
 
 sed -i "s/HOSTNAME=.*/HOSTNAME=$NEW_HOSTNAME/g" /etc/sysconfig/network
 
